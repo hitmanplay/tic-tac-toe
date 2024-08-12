@@ -18,8 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@shared/*": ["src/shared/*"],
-      "@pages/*": ["src/Pages/*"],
+      "@pages/*": ["src/pages/*"],
       "@src/*": ["src/*"],
       "@packageSrc": ["package.json"]
     },

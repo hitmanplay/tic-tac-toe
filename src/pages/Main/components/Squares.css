@@ -1,0 +1,16 @@
+.squares{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: .1s ease;
+}
+
+.squares:hover{
+    background-color: #d8d8d8;
+}
