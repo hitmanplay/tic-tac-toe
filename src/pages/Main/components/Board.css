@@ -7,3 +7,30 @@
     align-items: center;
     padding: 15% 40%;
 }
+
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 270px;
+    left: -40px;
+    right: 0;
+    color: white;
+}
+
+.restartBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 41.5%;
+    margin-top: -13.5%;
+    color: white;
+    padding: 10px 80px;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+    cursor: pointer;
+}

@@ -30,6 +30,10 @@ const Board = () => {
 
     const [info, setInfo] = useState(`Next - ${isNext ? 'x' : 'o'}`)
 
+    const handleRestart = () =>{
+        window.location.reload()
+    }
+
 
 
 
@@ -42,6 +46,8 @@ const Board = () => {
         console.log(winner);
         if (winner){
             setInfo(`Winner - ${winner}`);
+        }else{
+            setInfo(`Next - ${!isNext ? 'x' : 'o'}`);
         }
     }
 
@@ -53,6 +59,7 @@ const Board = () => {
                     <Squares key={i} value={square} onSelect={() => setSquareValue(i)}/>
                 ))}
             </div>
+            <button className='restartBtn' onClick={handleRestart}>RESTART</button>
         </div>
     )
         ;
