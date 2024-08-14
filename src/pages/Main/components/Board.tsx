@@ -39,9 +39,6 @@ const Board = () => {
         setIsNext(true)
     }
 
-    const handleResetChoice = () => {
-        window.location.reload()
-    }
 
     const setSquareValue = (index: number) => {
         if(isGameEnd){
@@ -56,21 +53,21 @@ const Board = () => {
         if (winner === 'x'){
             setInfo(`Winner - x`);
             setIsGameEnd(true)
-            setScoreX((score) => score + 1)
+            setScoreX((score: number) => score + 1)
         }else if(newSquares.every((item: string | null) => {
             return !!item
         })){
             setIsGameEnd(true)
             setInfo('Draw')
-            setScoreX((score) => score + 1)
-            setScoreY((score) => score + 1)
+            setScoreX((score: number) => score + 1)
+            setScoreY((score: number) => score + 1)
         }else{
             setInfo(`Next - ${!isNext ? 'x' : 'o'}`);
         }
         if(winner === 'o'){
             setInfo('Winner - o');
             setIsGameEnd(true)
-            setScoreY((score) => score + 1)
+            setScoreY((score: number) => score + 1)
         }
     }
 
