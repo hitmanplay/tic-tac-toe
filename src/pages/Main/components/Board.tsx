@@ -26,40 +26,65 @@ const checkWinner = (squares: string | null[]) => {
 
 const Board = () => {
     const [squares, setSquares] = useState(Array(9).fill(null))
-    const [isNext, setIsNext] = useState(true)
+    const [isNext, setIsNext] = useState<boolean>(true)
+    const [isGameEnd, setIsGameEnd] = useState<boolean>(false)
+    const [scoreX, setScoreX] = useState<number>(0)
+    const [scoreY, setScoreY] = useState<number>(0)
 
     const [info, setInfo] = useState(`Next - ${isNext ? 'x' : 'o'}`)
 
     const handleRestart = () =>{
+        setIsGameEnd(false);
+        setSquares(Array(9).fill(null));
+        setIsNext(true)
+    }
+
+    const handleResetChoice = () => {
         window.location.reload()
     }
 
-
-
-
     const setSquareValue = (index: number) => {
+        if(isGameEnd){
+            return
+        }
         let newSquares = squares.slice();
         newSquares[index] = (isNext) ? 'x' : 'o';
         setIsNext(!isNext)
         setSquares(newSquares);
         const winner = checkWinner(newSquares);
         console.log(winner);
-        if (winner){
-            setInfo(`Winner - ${winner}`);
+        if (winner === 'x'){
+            setInfo(`Winner - x`);
+            setIsGameEnd(true)
+            setScoreX((score) => score + 1)
+        }else if(newSquares.every((item: string | null) => {
+            return !!item
+        })){
+            setIsGameEnd(true)
+            setInfo('Draw')
+            setScoreX((score) => score + 1)
+            setScoreY((score) => score + 1)
         }else{
             setInfo(`Next - ${!isNext ? 'x' : 'o'}`);
+        }
+        if(winner === 'o'){
+            setInfo('Winner - o');
+            setIsGameEnd(true)
+            setScoreY((score) => score + 1)
         }
     }
 
     return (
         <div>
             <h1 className='info'>{info}</h1>
+            <h2 className='info'>X: {scoreX}</h2>
+            <h2 className='info'>O: {scoreY}</h2>
             <div className="board">
                 {squares.map((square, i: number) => (
                     <Squares key={i} value={square} onSelect={() => setSquareValue(i)}/>
                 ))}
             </div>
-            <button className='restartBtn' onClick={handleRestart}>RESTART</button>
+            {isGameEnd && <button className='restartBtn' onClick={handleRestart}>RESTART</button>}
         </div>
     )
         ;

@@ -15,10 +15,10 @@ const Modal: FC<IModal> = ({visible, setVisible}) => {
     },[visible])
     return (
         <div className={rootClasses} onClick={() => setVisible(false)}>
-            <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-                    <h1 className='subtitle'>Выберите с кем играть</h1>
-                    <button className="chooseBtn" onClick={(e) => setVisible(true)}>Игрок</button>
-                    <button className="chooseBtn"  onClick={(e) => setVisible(true)}>ИИ Бот</button>
+        <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+            <h1 className='subtitle'>Выберите Игрока</h1>
+            <button className='chooseBtn' onClick={() => setVisible(true)}>Игрок</button>
+            <button className='chooseBtn' onClick={() => setVisible(true)}>ИИ Бота</button>
             </div>
         </div>
     );
